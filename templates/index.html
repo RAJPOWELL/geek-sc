@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GFG Scraper</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="wrapper">
+    <div class="card">
+      <h1>⚡ GFG Problem Extractor</h1>
+      <p class="subtitle">Paste a GeeksforGeeks problem link below and save it to your GitHub repo.</p>
+      <form method="POST">
+        <input type="text" name="gfg_url" placeholder="Enter GFG Problem URL" required>
+        <button type="submit">Scrape & Save</button>
+      </form>
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <div class="messages">
+            {% for category, message in messages %}
+              <div class="msg {{ category }}">{{ message }}</div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+    </div>
+  </div>
+</body>
+</html>
